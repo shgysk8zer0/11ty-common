@@ -1,0 +1,13 @@
+<details class="opening-hours-container"{% if open %} open=""{% endif %}>
+	<summary class="opening-hours-label">
+		<b>{{ label | default: 'Hours' }}<b>
+	</summary>
+	<ul>{% for spec in hours %}{% if spec.opens and spec.closes %}
+	<li itemprop="openingHoursSpecification" itemtype="https://schema.org/OpeningHoursSpecification" itemscope="">
+		<b itemprop="dayOfWeek">{{ spec.dayOfWeek | replace: 'https://schema.org', '' }}</b>
+		<time itemprop="opens" datetime="{{ spec.opens }}">{{ spec.opens }}</time>
+		<span>&mdash;</span>
+		<time itemprop="closes" datatime="{{ spec.closes }}">{{ spec.closes }}</time>
+	</li>
+	{% endif %}{% endfor %}</ul>
+</details>

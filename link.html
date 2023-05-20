@@ -1,0 +1,2 @@
+{% capture url %}{% include "11ty-common/search-params.html" url: url params: params hash: hash %}{% endcapture %}
+<a href="{{ url | strip }}" rel="{{ rel | default: 'noreferrer noopener external' }}" target="{{ target | default: '_self' }}"{% if class %} class="{{ class }}"{% endif %}{% if itemprop %} itemprop="{{ itemprop }}"{% endif %}{% if slot %} slot="{{ slot }}{% endif %}{% if title %} title="{{ title }}"{% endif %}>{{ content }}</a>

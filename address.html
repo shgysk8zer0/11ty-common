@@ -1,0 +1,11 @@
+<address itemprop="{{ itemprop | default: 'address' }}" itemtype="https://schema.org/PostalAddress" itemscope=""{% if hidden %} hidden=""{% endif %}>
+	{% if address.name %}<div itemprop="name">{{ name }}</div>{% endif %}
+	{% if address.streetAddress %}<div itemprop="streetAddress">{{ address.streetAddress }}</div>{% endif %}
+	{% if address.postOfficeBoxNumber %}<div itemprop="postOfficeBoxNumber">PO Box {{ address.postOfficeBoxNumber | replace: 'PO Box', '' }}</div>{% endif %}
+	<div>
+		<span itemprop="addressLocality">{{ address.addressLocality }}</span>,
+		<span itemprop="addressRegion">{{ address.addressRegion | default: 'CA' }}</span>
+		<span itemprop="postalCode">{{ address.postalCode }}</span>
+		<meta itemprop="addressCountry" content="{{ address.addressCountry | default: 'US' }}"/>
+	</div>
+</address>

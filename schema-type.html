@@ -1,0 +1,39 @@
+{% case type %}
+{% when 'BarOrPub' %}Bar or Pub
+{% when 'FastFoodRestaurant' %}Fast Food
+{% when 'FoodEstablishment' %}Other Food Establishment
+{% when 'CafeOrCoffeeShop' %}Cafe or Coffee Shop
+{% when 'FireStation' %}Fire Station
+{% when 'PoliceStation' %}Police Station
+{% when 'HighSchool' %}High School
+{% when 'ElementarySchool' %}Elementary School
+{% when 'EmergencyService' %}Emergency Service
+{% when 'VeterinaryCare' %}Veterinary Care
+{% when 'AnimalShelter' %}Animal Shelter
+{% when 'PostOffice' %}Post Office
+{% when 'ParkingFacility' %}Parking
+{% when 'LocalBusiness' or 'Organization' %}Other Business
+{% when 'BankOrCreditUnion' %}Bank or Credit Union
+{% when 'AutomatedTeller' %}ATM
+{% when 'FinancialService' %}Financial Service
+{% when 'RealEstateAgent' %}Real Estate
+{% when 'GasStation' %}Gas Station
+{% when 'GroceryStore' %}Grocery Store
+{% when 'HardwareStore' %}Hardware Store
+{% when 'AutoPartsStore' %}Auto Parts Store
+{% when 'AutoRepair' %}Auto Repair
+{% when 'TireShop' %}Tire Shop
+{% when 'SelfStorage' %}Self Storage
+{% when 'Store' %}Other Store
+{% when 'OfficeEquipmentStore' %}Office Equipment
+{% when 'JewelryStore' %}Jewelry Store
+{% when 'BowlingAlley' %}Bowling Alley
+{% when 'MovieTheater' %}Movie Theater
+{% when 'Scrool' %}Other School
+{% when 'NGO' %}Non-Government Organization
+{% when 'TouristAttraction' %}Tourist Attraction
+{% when 'LandmarksOrHistoricalBuildings' %}Landmarks or Historical Building
+{% when 'NewsMediaOrganization' %}News and Media
+{% when 'HVACBusiness' %}HVAC Business
+{% else %}{{ type | default: 'Unknown' }}
+{% endcase %}

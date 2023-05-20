@@ -1,0 +1,62 @@
+<div class="{{ containerClass | default: 'flex row wrap space-around same-as-links' }}">
+	{% if url %}
+		{% include "11ty-common/url.html" url: url width: "36" height: "36" fill: "currentColor" class: "social-icon" no-text: true %}
+	{% endif %}
+	{% if email %}
+		{% include "11ty-common/email.html" email: email width: "36" height: "36" fill: "currentColor" class: "social-icon" no-text: true %}
+	{% endif %}
+	{% if telephone %}
+		{% include "11ty-common/telephone.html" telephone: telephone width: "36" height: "36" fill: "currentColor" class: "social-icon" no-text: true %}
+	{% endif %}
+	{% for link in sameAs %}
+		{% if link contains "https://www.facebook.com/" %}
+			<a href="{{ link }}" itemprop="sameAs" rel="noreferrer noopener external" class="social-link facebook" title="Facebook">
+				{% include "11ty-common/icon.html" icon: "facebook" width: "36" height: "36" class: "social-icon" %}
+			</a>
+		{% elsif link contains "https://twitter.com" %}
+			<a href="{{ link }}" itemprop="sameAs" rel="noreferrer noopener external" class="social-link twitter" title="Twitter">
+				{% include "11ty-common/icon.html" icon: "twitter" width: "36" height: "36" class: "social-icon" %}
+			</a>
+		{% elsif link contains "https://instagram.com/" or link contains "https://www.instagram.com/" %}
+			<a href="{{ link }}" itemprop="sameAs" rel="noreferrer noopener external" class="social-link instagram" title="Instagram">
+				<img src="https://cdn.kernvalley.us/img/logos/instagram.svg" width="36" height="36" loading="lazy" decoding="async" crossorigin="anonymous" referrerpolicy="no-referrer" alt="Instagram" />
+			</a>
+		{% elsif link contains "https://www.linkedin.com/" %}
+			<a href="{{ link }}" itemprop="sameAs" rel="noreferrer noopener external" class="social-link linkedin" title="LinkedIn">
+				{% include "11ty-common/icon.html" icon: "linkedin" width: "36" height: "36" class: "social-icon" %}
+			</a>
+		{% elsif link contains "https://github.com/" %}
+			<a href="{{ link }}" itemprop="sameAs" rel="noreferrer noopener external" class="social-link github" title="GitHub">
+				{% include "11ty-common/icon.html" icon: "mark-github" width: "36" height: "36" class: "social-icon" %}
+			</a>
+		{% elsif link contains "https://www.yelp.com/" %}
+			<a href="{{ link }}" itemprop="sameAs" rel="noreferrer noopener external" class="social-link yelp" title="Yelp">
+				{% include "11ty-common/icon.html" icon: "yelp" width: "36" height: "36" class: "social-icon" %}
+			</a>
+		{% elsif link contains "https://www.tripadvisor.com/" %}
+			<a href="{{ link }}" itemprop="sameAs" rel="noreferrer noopener external" class="social-link tripadvisor" title="TripAdvisor">
+				{% include "11ty-common/icon.html" icon: "tripadvisor" width: "36" height="36" class: "social-icon" %}
+			</a>
+		{% elsif link contains "https://www.youtube.com/" %}
+			<a href="{{ link }}" itemprop="sameAs" rel="noreferrer noopener external" class="social-link youtube" title="YouTube">
+				{% include "11ty-common/icon.html" icon: "youtube" width: "36" height: "36" class: "social-icon" %}
+			</a>
+		{% elsif link contains "https://maps.google.com/" %}
+			<a href="{{ link }}" itemprop="sameAs" rel="noreferrer noopener external" class="social-link maps" title="Google Maps">
+				{% include "11ty-common/icon.html" icon: "google-maps" width: "36" height: "36" class: "social-icon" %}
+			</a>
+		{% elsif link contains "https://open.spotify.com/" %}
+			<a href="{{ link }}" itemprop="sameAs" rel="noreferrer noopener external" class="social-link spotify" title="Spotify">
+				{% include "11ty-common/icon.html" icon: "spotify" width: "36" height: "36" class: "social-icon" %}
+			</a>
+		{% elsif link contains "https://soundcloud.com/" %}
+			<a href="{{ link }}" itemprop="sameAs" rel="noreferrer noopener external" class="social-link soundcloud" title="SoundCloud">
+				{% include "11ty-common/icon.html" icon: "soundcloud" width: "36" height: "36" class: "social-icon" %}
+			</a>
+		{% elsif link contains "https://" %}
+			<a href="{{ link }}" itemprop="sameAs" rel="noreferrer noopener external" class="social-link other" title="Other Site">
+				{% include "11ty-common/icon.html" icon: "link" width: "36" height: "36" class: "social-icon" fill="currentColor" %}
+			</a>
+		{% endif %}
+	{% endfor %}
+</div>

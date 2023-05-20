@@ -1,0 +1,5 @@
+{% if srcset | size %}
+<img src="{{ src | strip }}" srcset="{{ srcset | join: ',' }}" sizes="{{ sizes | default: '100vw' }}" height="{{ height }}" width="{{ width }}"{% unless crossOrigin == false %} crossorigin="{{ crossOrigin | default: 'anonmyous' }}"{% endunless %} referrerpolicy="{{ referrerPolicy | default: 'no-referrer' }}" loading="{{ loading | default: 'lazy' }}" decoding="{{ decoding | default: 'async' }}"{% if class %} class="{{ class }}"{% endif %}{%if itemprop %} itemprop="{{ itemprop }}"{% endif %}{% if slot %} slot="{{ slot }}"{% endif %} alt="{{ alt | escape }}" />
+{% else %}
+<img src="{{ src | strip }}" height="{{ height }}" width="{{ width }}" {% unless crossOrigin == false %} crossorigin="{{ crossOrigin | default: 'anonmyous' }}"{% endunless %} referrerpolicy="{{ referrerPolicy | default: 'no-referrer' }}" loading="{{ loading | default: 'lazy' }}" decoding="{{ decoding | default: 'async' }}"{% if class %} class="{{ class }}"{% endif %}{%if itemprop %} itemprop="{{ itemprop }}"{% endif %}{% if slot %} slot="{{ slot }}"{% endif %} alt="{{ alt | escape }}" />
+{% endif %}

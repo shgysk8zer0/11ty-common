@@ -1,0 +1,25 @@
+{% capture hash %}{{ url | replace: 'https://i.imgur.com/', '' | replace: 'https://imgur.com/', '' | replace: '.png', '' | replace: '.jpg', '' }}{% endcapture %}
+{% capture imgur %}{{ hash | prepend: 'https://i.imgur.com/' }}{% endcapture %}
+<picture data-imgur="{{ hash }}">
+	<source
+		srcset="{{ imgur }}h.webp 1024w, {{ imgur }}l.webp 640w, {{ imgur }}m.webp 320w, {{ imgur }}t.webp 160w"
+		sizes="{{ sizes | default: '(min-width: 700px) 75vw, 100vw' }}"
+		type="image/webp"/>
+	<source
+		srcset="{{ imgur }}h.png 1024w, {{ imgur }}l.png 640w, {{ imgur }}m.png 320w, {{ imgur }}t.png 160w"
+		sizes="{{ sizes | default: '(min-width: 700px) 75vw, 100vw' }}"
+		type="image/png"/>
+	<img
+		src="{{ imgur }}{{ default_size : default: 'h'}}.png"
+		class="{{ class | default: 'card shadow imgur' }}"
+		alt="{{ alt | default: '' }}"
+		title="{{ title | default: alt }}"
+		crossorigin="{{ crossorigin | default: 'anonymous' }}"
+		referrerpolicy="{{ referrerpolicy | default: 'origin-when-cross-origin' }}"
+		decoding="{{ decoding | default: 'auto' }}"
+		loading="{{ loading | default: 'lazy' }}"
+		{% if itemprop %}itemprop="{{ itemprop }}"{% endif %}
+		{% if id %} id="{{ id }}"{% endif %}
+		{% if width %}width="{{ width }}"{% endif %}
+		{% if height %}height="{{ height %}}"{% endif %} />
+</picture>
