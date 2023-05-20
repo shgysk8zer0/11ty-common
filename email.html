@@ -1,0 +1,4 @@
+<a href="mailto:{{ email }}" class="color-inherit" content="{{ email }}" itemprop="{{ itemprop | default: 'email' }}" title="Email {{ email }}">
+	{% include "11ty-common/icon.html" icon: "mail-unread" height: height width: width fill: fill class: class %}
+	{% unless no-text == true %}<span>{{ email }}</span>{% endunless %}
+</a>

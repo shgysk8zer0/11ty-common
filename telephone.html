@@ -1,0 +1,4 @@
+<a href="tel:{{ telephone }}" class="color-inherit" content="{{ telephone }}" itemprop="{{ itemprop | default: 'telephone'}}" title="Call {{ telephone | remove: '+1-' | remove: '+' }}">
+	{% include "11ty-common/icon.html" icon: 'call-start' height: height width: width fill: fill class: class %}
+	{% unless no-text == true %}<span>{{ telephone | remove: '+1-' | remove: '+' }}</span>{% endunless %}
+</a>

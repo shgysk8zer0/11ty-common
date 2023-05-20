@@ -1,0 +1,7 @@
+{% capture url %}{% include "11ty-common/search-params.html" url: url params: params hash: hash %}{% endcapture %}
+<a href="{{ url | strip }}" class="color-inherit" itemprop="{{ itemprop | default: 'url' }}" rel="noopener noreferrer external" title="Visit {{ url | remove: 'http://' | remove: 'https://' | remove: 'www.' | split: '/' | first }}">
+	{% include "11ty-common/icon.html" icon: 'web-browser' height: height width: width fill: fill class=class %}
+	{% unless no-text == true %}
+		<span>{{ url | remove: 'http://' | remove: 'https://' | remove: 'www.' | split: '/' | first }}</span>
+	{% endunless %}
+</a>

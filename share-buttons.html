@@ -1,0 +1,41 @@
+<div class="share-btns">
+	<h4>{{ heading | default: 'Share on&hellip;' }}</h4>
+	<div class="flex row wrap space-evenly">
+		{% if facebook %}
+			<share-to-button target="facebook" class="custom-element share-target if-defined" text="{{ text }}" url="{{ url | default: page.url }}" title="Share on Facebook" source="{{ source | default: site.title | slugify }}" medium="{{ medium }}" content="{{ content }}">
+					<span slot="text">
+						<span>{{ facebook_text | default: 'Facebook' }}</span>
+					</span>
+			</share-to-button>
+		{% endif %}
+		{% if twitter %}
+			<share-to-button target="twitter" class="custom-element share-target if-defined" text="{{ text }}" url="{{ url | default: page.url }}" title="Share on Twitter">
+					<span slot="text">
+						<span>{{ twitter_text | default: 'Twitter' }}</span>
+					</span>
+			</share-to-button>
+		{% endif %}
+		{% if reddit %}
+			<share-to-button target="reddit" class="custom-element share-target if-defined" text="{{ text }}" url="{{ url | default: page.url }}" title="Share on Reddit"source="{{ source | default: site.title | slugify }}" medium="{{ medium }}" content="{{ content }}">
+				<span slot="text">
+					<span>{{ reddit_text | default: 'Reddit' }}</span>
+				</span>
+			</share-to-button>
+		{% endif %}
+		{% if linkedin %}
+			<share-to-button target="linkedin" class="custom-element share-target if-defined" text="{{ text }}" url="{{ url | default: page.url }}" title="Share on LinkedIn"source="{{ source | default: site.title | slugify }}" medium="{{ medium }}" content="{{ content }}">
+				<span slot="text">
+					<span>{{ linkedin_text | default: 'LinkedIn' }}</span>
+				</span>
+			</share-to-button>
+		{% endif %}
+		{% if clipboard %}
+			<share-to-button target="clipboard" class="custom-element share-target if-defined" text="{{ text }}" url="{{ url | default: page.url }}" title="Copy to Clipboard"source="{{ source | default: site.title | slugify }}" medium="{{ medium }}" content="{{ content }}">
+				<span slot="text">
+					<span>{{ clipboard_text | default: 'Copy' }}</span>
+				</span>
+			</share-to-button>
+		{% endif %}
+	</div>
+	<hr />
+</div>
