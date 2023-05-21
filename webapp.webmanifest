@@ -1,0 +1,27 @@
+{
+	"version": "{{ app.version | default: site.version }}",{% if app.id %}
+	"id": "{{ app.id }}",{% endif %}
+	"name": "{{ app.name | default: site.title }}",
+	"short_name": "{{ app.shortName | default: site.title}}",
+	"description": "{{ app.description | default: site.description }}",
+	"start_url": "{{ app.startUrl | default: page.url | replace: 'webapp.webmanifest' }}",
+	"scope": "{{ app.scope | default: '/' }}",
+	"lang": "{{ app.lang | default: site.lang }}",
+	"dir": "{{ site.app.data.dir | default: 'ltr' }}",
+	"orientation": "{{ site.app.data.orientation | default: 'any' }}",
+	"display": "{{ app.display | default: 'standalone' }}",
+	"theme_color": "{{ app.theme.color | default: '#007bff' }}",
+	"background_color": "{{ app.theme.background | default: '#FEFEFE' }}",
+	"icons": {{ app.icons | is_icon }},
+	"screenshots": {{ app.screenshots | jsonify }},{% if app.iarc_rating_id %}
+	"iarc_rating_id": {{ app.iarc_rating_id | jsonify }},{% endif %}
+	"prefer_related_applications": {% if app.prefer_related_applications == true %}true{% else %}false{% endif %},{% if app.related_applications %}
+	"related_applications": {{ app.related_applications | jsonify }},{% endif %}{% if app.shortcuts %}
+	"shortcuts": {{ app.shortcuts | jsonify }},{% endif %}{% if app.display_override %}
+	"display_override": {{ app.display_override | jsonify }},{% endif %}{% if app.share_target %}
+	"share_target": {{ app.share_target | jsonify }},{% endif %}{% if app.file_handlers %}
+	"file_handlers": {{ app.file_handlers | jsonify }},{% endif %}{% if app.protocol_handlers %}
+	"protocol_handlers": {{ app.protocol_handlers | jsonify }},{% endif %}
+	"categories": {{ app.categories | jsonify | default: '["lifestyle"]' }},{% if app.features %}
+	"features": {{ app.features | jsonify }}{% endif %}
+}

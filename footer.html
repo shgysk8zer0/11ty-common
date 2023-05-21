@@ -55,7 +55,7 @@
 					<span>GitHub Profile</span>
 				</a>
 				<a class="block" href="https://github.com/{{ site.repository.username }}/{{ site.repository.project }}" target="_blank" rel="noopener noreferrer external">
-					{% include "11ty-common/icon.html" icon: "repo" class="current-color icon social-icon" %}
+					{% include "11ty-common/icon.html" icon: "repo" class: "current-color icon social-icon" %}
 					<span>GitHub Repo</span>
 				</a>
 				<a class="block" href="https://github.com/{{ site.repository.username }}/{{ site.repository.project }}/issues" target="_blank" rel="noopener noreferrer external">
@@ -83,6 +83,6 @@
 				</span>
 			</div>
 		</github-user>
-		{% if keep-kern-clean == true %}{% include "11ty-common/keep-kern-clean.html" %}{% endif %}
+		{% if site.keep-kern-clean == true %}{% include "11ty-common/keep-kern-clean.html" %}{% endif %}
 	</div>
 </footer>
