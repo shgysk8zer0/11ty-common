@@ -1,6 +1,6 @@
 <script
 	type="{{ type | default: 'text/javascript' }}"
-	src="{{ src }}"
+	src="{{ src | resolve_specifier }}"
 	{% if crossOrigin %}crossorigin="{{ crossOrigin }}"{% endif %}
 	{% if referrerPolicy %}referrerpolicy="{{ referrerPolicy }}"{% endif %}
 	{% if async %}async=""{% endif %}
