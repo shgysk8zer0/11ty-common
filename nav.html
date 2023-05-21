@@ -1,10 +1,10 @@
 <nav id="nav" class="sticky top shadow background-accent color-alt z-3 flex row nowrap overflow-x-auto">
 	{% unless appList == false %}
-		<button type="button" is="app-list" id="app-menu" class="btn nav-btn" source="{{ site.data.ads.source | default: site.title | escape }}" title="Show KRV Apps Menu" hidden="">
+		<button type="button" is="app-list" id="app-menu" class="btn nav-btn" source="{{ ads.source | default: site.title | escape }}" title="Show KRV Apps Menu" hidden="">
 			{% include "11ty-common/icon.html" icon: "apps" height: "22" width: "22" fill: "currentColor" %}
 		</button>
 	{% endunless %}
-	{% for link in site.data.links.nav %}
+	{% for link in links.nav %}
 		<a href="{{ link.href }}" class="nav-link center inline-block{% if link.href == page.url %} active no-pointer-events{% endif %}" title="{{ link.label | escape }}" rel="{{ link.rel | join: ' ' }}" target="{{ link.target | default: '_self' }}"{% if link.href == page.url %} inert="" tabindex="-1"{% endif %}>
 			{% if link.icon %}{% include "11ty-common/icon.html" icon: link.icon %}<br class="nav-item-br" />{% endif %}
 			<span class="nav-link-label">{{ link.label }}</span>

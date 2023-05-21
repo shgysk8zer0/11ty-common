@@ -89,7 +89,7 @@
 	{% else %}
 		<title itemprop="name headline">{{ page.title | default: 'Home' }} | {{ site.title }}</title>
 	{% endif %}
-	{% if importmap %}<script type="importmap"{% if importmap.nonce %} nonce="{{ importmap.nonce }}"{% endif %}>{"imports":{{ importmap.imports | jsonify }}}</script>{% endif %}
+	{% if importmap %}<script type="importmap" integrity="{{ importmap | jsonify | sri }}">{{ importmap | jsonify }}</script>{% endif %}
 	{% if scripts %}{% for script in scripts[environment] %}
 		{% include "11ty-common/script.html" src: script.src type: script.type async: script.async defer: script.defer crossOrigin: script.crossOrigin referrerPolicy: script.referrerPolicy integrity: script.integrity noModule: script.noModule %}
 	{% endfor %}{% endif %}

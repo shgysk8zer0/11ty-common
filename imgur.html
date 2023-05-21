@@ -10,7 +10,7 @@
 		sizes="{{ sizes | default: '(min-width: 700px) 75vw, 100vw' }}"
 		type="image/png"/>
 	<img
-		src="{{ imgur }}{{ default_size : default: 'h'}}.png"
+		src="{{ imgur }}{{ default_size | default: 'h'}}.png"
 		class="{{ class | default: 'card shadow imgur' }}"
 		alt="{{ alt | default: '' }}"
 		title="{{ title | default: alt }}"
@@ -21,5 +21,5 @@
 		{% if itemprop %}itemprop="{{ itemprop }}"{% endif %}
 		{% if id %} id="{{ id }}"{% endif %}
 		{% if width %}width="{{ width }}"{% endif %}
-		{% if height %}height="{{ height %}}"{% endif %} />
+		{% if height %}height="{{ height }}"{% endif %} />
 </picture>
