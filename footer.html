@@ -54,11 +54,11 @@
 					{% include "11ty-common/icon.html" icon: "mark-github" class: "current-color icon social-icon" %}
 					<span>GitHub Profile</span>
 				</a>
-				<a class="block" href="https://github.com/{{ site.repository.username }}/{{ site.repository.project }}" target="_blank" rel="noopener noreferrer external">
+				<a class="block" href="{{ pkg.repo.url | replace | 'git+', '' }}s" target="_blank" rel="noopener noreferrer external">
 					{% include "11ty-common/icon.html" icon: "repo" class: "current-color icon social-icon" %}
 					<span>GitHub Repo</span>
 				</a>
-				<a class="block" href="https://github.com/{{ site.repository.username }}/{{ site.repository.project }}/issues" target="_blank" rel="noopener noreferrer external">
+				<a class="block" href="{{ pkg.bugs.urls }}" target="_blank" rel="noopener noreferrer external">
 					{% include "11ty-common/icon.html" icon: "issue-opened" class: "current-color icon social-icon" %}
 					<span>Report a Problem</span>
 				</a>
