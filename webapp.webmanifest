@@ -1,14 +1,14 @@
 {
-	"version": "{{ app.version | default: site.version }}",{% if app.id %}
+	"version": "{{ app.version | default: pkg.version }}",{% if app.id %}
 	"id": "{{ app.id }}",{% endif %}
-	"name": "{{ app.name | default: site.title }}",
-	"short_name": "{{ app.shortName | default: site.title}}",
-	"description": "{{ app.description | default: site.description }}",
-	"start_url": "{{ app.startUrl | default: page.url | replace: 'webapp.webmanifest' }}",
+	"name": "{{ app.name | default: pkg.name }}",
+	"short_name": "{{ app.shortName | default: pkg.name}}",
+	"description": "{{ app.description | default: pkg.description }}",
+	"start_url": "{{ app.startUrl | default: page.url | replace: 'webapp.webmanifest', '' }}",
 	"scope": "{{ app.scope | default: '/' }}",
-	"lang": "{{ app.lang | default: site.lang }}",
-	"dir": "{{ site.app.data.dir | default: 'ltr' }}",
-	"orientation": "{{ site.app.data.orientation | default: 'any' }}",
+	"lang": "{{ app.lang | default: 'en' }}",
+	"dir": "{{ app.data.dir | default: 'ltr' }}",
+	"orientation": "{{ app.data.orientation | default: 'any' }}",
 	"display": "{{ app.display | default: 'standalone' }}",
 	"theme_color": "{{ app.theme.color | default: '#007bff' }}",
 	"background_color": "{{ app.theme.background | default: '#FEFEFE' }}",

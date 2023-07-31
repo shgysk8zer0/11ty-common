@@ -2,7 +2,7 @@
 	<details class="accordion" open="">
 		<summary>{{ summary | default: 'Frequently Asked Questions' }}</summary>
 		{% for qa in faq %}
-			{% capture qid %}{{ qa.question strip_html | sluggify | downcase | replace: ' ', '-' | trim | escape }}{% endcapture %}
+			{% capture qid %}{{ qa.question strip_html | slugify | downcase | replace: ' ', '-' | trim | escape }}{% endcapture %}
 			<dl aria-role="list" id="faq-{{ qid }}" class="faq-group" title="FAQ" itemprop="mainEntity" itemtype="https://schema.org/Question" itemscope="">
 				<dt class="faq-question">
 					<b title="Question">
