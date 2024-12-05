@@ -1,8 +1,5 @@
-<link
-	rel="{{ rel | default: 'stylesheet' }}"
-	href="{{ href }}"
-	media="{{ media | default: 'all' }}"
-	{% if title %}title="{{ title }}"{% endif %}
-	{% if crossOrigin %}crossorigin="{{ crossOrigin }}"{% endif %}
-	{% if referrerPolicy %}referrerpolicy="{{ referrerPolicy }}"{% endif %}
-	{% if stylesheet.integrity %}integrity="{{ integrity }}"{% endif %} />
+<link rel="{{ rel | default: 'stylesheet' }}" href="{{ href }}" media="{{ media | default: 'all' }}"{% if title %}
+	title="{{ title }}"{% endif %}{% if crossOrigin %}
+	crossorigin="{{ crossOrigin }}"{% endif %}{% if referrerPolicy %}
+	referrerpolicy="{{ referrerPolicy }}"{% endif %}{% if stylesheet.integrity %}
+	integrity="{{ integrity }}"{% endif %} />
