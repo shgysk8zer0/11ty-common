@@ -1,11 +1,10 @@
-<script
-	type="{{ type | default: 'text/javascript' }}"
-	src="{{ src | resolve_specifier }}"
-	{% if crossOrigin %}crossorigin="{{ crossOrigin }}"{% endif %}
-	{% if referrerPolicy %}referrerpolicy="{{ referrerPolicy }}"{% endif %}
-	{% if async %}async=""{% endif %}
-	{% if defer %}defer=""{% endif %}
-	{% if noModule %}nomodule=""{% endif %}
-	{% if integrity == 'auto' %}integrity="{{ src | read_file | sri }}"
-	{% elsif integrity %}integrity="{{ integrity }}"{% endif %}
-></script>
+<script type="{{ type | default: 'text/javascript' }}" src="{{ src | resolve_specifier }}" {% if crossOrigin %}
+	crossorigin="{{ crossOrigin }}"{% endif %}{% if referrerPolicy %}
+	referrerpolicy="{{ referrerPolicy }}"{% endif %}{% if async %}
+	async=""{% endif %}{% if defer %}
+	defer=""{% endif %}{% if noModule %}
+	nomodule=""{% endif %}{% if integrity == 'auto' %}
+	integrity="{{ src | read_file | sri }}"{% elsif integrity %}
+	integrity="{{ integrity }}"{% endif %}{% if nonce %}
+	nonce="{{ nonce }}"{% endif %}{% if blocking %}
+	blocking="{{ blocking}}"{% endif %}></script>

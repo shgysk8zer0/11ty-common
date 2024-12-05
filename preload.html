@@ -2,7 +2,7 @@
 	{% if type %}type="{{ type }}"{% endif %}
 	{% if crossOrigin %}crossorigin="{{ crossOrigin }}"{% endif %}
 	{% if referrerPolicy %}referrerpolicy="{{ referrerPolicy }}"{% endif %}
-	importance="{{ importance | default: 'auto' }}"
+	fetchpriority="{{ fetchPriority | default: 'auto' }}"
 	{% if integrity %}integrity="{{ integrity }}"{% endif %}
 	{% if media %}media="{{ media }}"{% endif %}
 	/>

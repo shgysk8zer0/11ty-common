@@ -7,7 +7,7 @@
 	<meta itemprop="description" content="{{ description }}" />
 	<meta name="keywords" content="{{ tags | join: ', ' }}" />
 	<meta itemprop="keywords" content="{{ tags | join: ', ' }}" />
-	<meta name="referrer" content="{{ referrer | default: 'strict-origin-when-crossorigin' }}"/>
+	<meta name="referrer" content="{{ referrer | default: 'origin-when-crossorigin' }}"/>
 	<meta name="mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="color-scheme" content="{{ color-scheme | default: 'light dark' }}" />
@@ -96,9 +96,6 @@
 	{% if layout.scripts %}{% for script in layout.scripts %}
 		{% include "11ty-common/script.html" src: script.src type: script.type async: script.async defer: script.defer crossOrigin: script.crossOrigin referrerPolicy: script.referrerPolicy integrity: script.integrity noModule: script.noModule %}
 	{% endfor %}{% endif %}
-	{% if scripts %}{% for script in scripts %}
-		{% include "11ty-common/script.html" src: script.src type: script.type async: script.async defer: script.defer crossOrigin: script.crossOrigin referrerPolicy: script.referrerPolicy integrity: script.integrity noModule: script.noModule %}
-	{% endfor %}{% endif %}
 	{% if site.manifest %}
 		<link rel="manifest" href="{{ site.manifest }}" />
 	{% endif %}
@@ -108,6 +105,9 @@
 	{% endfor %}
 	<link rel="mask-icon" href="/img/safari-pinned-tab.svg" color="{{ app.theme.color | default: '#528ff9' }}" />
 	<link rel="shortcut icon" href="/favicon.ico" />
+	{% if modulePreload %}{% for link in modulePreload %}
+		<link rel="modulepreload" href="{{ link.href | resolve_specifier }}" crossorigin="{{ link.crossOrigin | default: 'anonymous' }}" referrerpolicy="{{ link.referrerPolicy | default: 'no-referrer' }}" fetchpriority="{{ link.fetchPriority | default: 'auto' }}" as="{{ link.as | default: 'script' }}" />
+	{% endfor %}{% endif %}
 	{% if preload %}{% for link in preload %}
 		{% include "11ty-common/preload.html" href: link.href as: link.as type: link.type crossOrigin: link.crossOrigin referrerPolicy: link.referrerPolicy integrity: link.integrity importance: link.importance media: link.media %}
 	{% endfor %}{% endif %}
@@ -118,13 +118,13 @@
 		{% include "11ty-common/preload.html" href: link.href as: link.as type: link.type crossOrigin: link.crossOrigin referrerPolicy: link.referrerPolicy integrity: link.integrity importance: link.importance media: link.media %}
 	{% endfor %}{% endif %}
 	{% if prefetch %}{% for link in prefetch %}
-		<link rel="prefetch" href="{{ link.href }}" as="{{ link.as | default: 'fetch' }}" type="{{ link.type }}" crossorigin="{{ link.crossOrigin | default: 'anonymous' }}" referrerpolicy="{{ link.referrerPolicy | default: 'no-referrer' }}" integrity="{{ link.integrity }}" importance="{{ link.importance | default: 'auto' }}" />
+		<link rel="prefetch" href="{{ link.href }}" as="{{ link.as | default: 'fetch' }}" type="{{ link.type }}" crossorigin="{{ link.crossOrigin | default: 'anonymous' }}" referrerpolicy="{{ link.referrerPolicy | default: 'no-referrer' }}" integrity="{{ link.integrity }}" fetchpriority="{{ link.fetchPriority | default: 'auto' }}" />
 	{% endfor %}{% endif %}
 	{% if layout.prefetch %}{% for link in layout.prefetch %}
-		<link rel="prefetch" href="{{ link.href }}" as="{{ link.as | default: 'fetch' }}" type="{{ link.type }}" crossorigin="{{ link.crossOrigin | default: 'anonymous' }}" referrerpolicy="{{ link.referrerPolicy | default: 'no-referrer' }}"  importance="{{ link.importance | default: 'auto' }}" />
+		<link rel="prefetch" href="{{ link.href }}" as="{{ link.as | default: 'fetch' }}" type="{{ link.type }}" crossorigin="{{ link.crossOrigin | default: 'anonymous' }}" referrerpolicy="{{ link.referrerPolicy | default: 'no-referrer' }}"  fetchpriority="{{ link.fetchPriority | default: 'auto' }}" />
 	{% endfor %}{% endif %}
 	{% if prefetch %}{% for link in prefetch %}
-		<link rel="prefetch" href="{{ link.href }}" as="{{ link.as | default: 'fetch' }}" type="{{ link.type }}" crossorigin="{{ link.crossOrigin | default: 'anonymous' }}" referrerpolicy="{{ link.referrerPolicy | default: 'no-referrer' }}" integrity="{{ link.integrity }}" importance="{{ link.importance | default: 'auto' }}" />
+		<link rel="prefetch" href="{{ link.href }}" as="{{ link.as | default: 'fetch' }}" type="{{ link.type }}" crossorigin="{{ link.crossOrigin | default: 'anonymous' }}" referrerpolicy="{{ link.referrerPolicy | default: 'no-referrer' }}" integrity="{{ link.integrity }}" fetchpriority="{{ link.fetchPriority | default: 'auto' }}" />
 	{% endfor %}{% endif %}
 	{% if dns-prefetch %}{% for link in dns-prefetch %}
 		<link rel="dns-prefetch" href="{{ link.href }}" crossorigin="{{ link.crossOrigin | default: 'anonymous' }}" referrerpolicy="{{ link.referrerPolicy | default: 'no-referrer' }}" />
@@ -148,12 +148,9 @@
 			<link rel="prerender" href="{{ link.href }}" />
 	{% endfor %}{% endif %}
 	{% if stylesheets %}{% for stylesheet in stylesheets[environment] %}
-		{% include "11ty-common/stylesheet.html" rel: stylesheet.rel href: stylesheet.href title: stylesheet.title crossOrigin: stylesheet.crossOrigin referrerPolicy: stylesheet.referrerPolicy integrity: stylesheet.integrity %}
+		{%- include "11ty-common/stylesheet.html" rel: stylesheet.rel href: stylesheet.href title: stylesheet.title crossOrigin: stylesheet.crossOrigin referrerPolicy: stylesheet.referrerPolicy integrity: stylesheet.integrity -%}
 	{% endfor %}{% endif %}
 	{% if layout.stylesheets %}{% for stylesheet in layout.stylesheets %}
-		{% include "11ty-common/stylesheet.html" rel: stylesheet.rel href: stylesheet.href title: stylesheet.title crossOrigin: stylesheet.crossOrigin referrerPolicy: stylesheet.referrerPolicy integrity: stylesheet.integrity %}
-	{% endfor %}{% endif %}
-	{% if stylesheets %}{% for stylesheet in stylesheets %}
 		{% include "11ty-common/stylesheet.html" rel: stylesheet.rel href: stylesheet.href title: stylesheet.title crossOrigin: stylesheet.crossOrigin referrerPolicy: stylesheet.referrerPolicy integrity: stylesheet.integrity %}
 	{% endfor %}{% endif %}
 	{% if feed %}<link rel="alternate" href="{{ feed.url }}" type="{{ feed.type | default: 'application/rss+xml' }}" title="{{ feed.title | default: 'Page Feed' }}" />{% endif %}
