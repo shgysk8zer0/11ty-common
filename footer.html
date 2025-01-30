@@ -3,7 +3,7 @@
 		{% if links.footer %}
 			<div class="inline-block footer-links">
 				{% for link in links.footer %}
-					<a href="{{ link.href }}" class="block" target="{{ link.target | default: '_self' }}" rel="{{ link.rel | join: ' ' }}">
+					<a href="{{ link.href }}" class="block" target="{{ link.target | default: '_self' }}" rel="{{ link.rel | join: ' ' }}"{% if link.download %} download="{{ link.download | escape_xml }}"{% endif %}>
 						{% if link.icon %}{% include "11ty-common/icon.html" icon: link.icon fill: "currentColor" height: "24" width: "24" %}{% endif %}
 						<span>{{ link.label }}</span>
 					</a>
