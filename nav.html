@@ -12,7 +12,7 @@
 	{% endfor %}
 	<span class="grow-4"></span>
 	{% if site.service_worker %}
-		<button type="button" is="pwa-install" id="install-btn" class="btn nav-btn" src="{{ site.service_worker }}" scope="/" title="Install Web App" reloadonupdate="" hidden="">
+		<button type="button" id="install-btn" class="btn nav-btn" command="show-popover" commandfor="pwa-install-prompt">
 			{% include "11ty-common/icon.html" height: 22 width: 22 fill: "currentColor" icon: "system-software-install" %}
 			<span class="mobile-hidden">Install</span>
 		</button>
