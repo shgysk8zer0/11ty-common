@@ -1,12 +1,8 @@
-<button
-	{% if title %}title="{{ title | escape }}"{% endif %}
-	{% if url %}url="{{ url }}"{% endif %}
-	{% if text %}text="{{ text | strip_newlines | strip_html | escape }}"{% endif %}
-	class="{{ position | default: 'fixed' }} btn btn-primary round shadow-dark color-alt border-hidden background-accent z-top"
+<share-button
+	{% if title %}data-share-title="{{ title | escape }}"{% endif %}
+	{% if url %}data-share-url="{{ url }}"{% endif %}
+	{% if text %}data-share-text="{{ text | strip_newlines | strip_html | escape }}"{% endif %}
+	class="{{ position | default: 'fixed' }} btn btn-primary share-btn round shadow-dark color-alt border-hidden background-accent z-top"
 	aria-label="{{ label | default: 'Share Page'}}"
-	is="share-button"
-	source="{{ source | default: site.title | slugify }}"
-	{% if medium %}medium="{{ medium }}"{% endif %}
-	{% if shareContent %}content="{{ shareContent | strip_html }}"{% endif %}
 	hidden=""
->{% include "11ty-common/icon.html" icon: "public-share" height: 18 width: 18 fill: "currentColor" %}</button>
+>{% include "11ty-common/icon.html" icon: "public-share" height: 18 width: 18 fill: "currentColor" %}</share-button>
