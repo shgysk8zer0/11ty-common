@@ -1,27 +1,28 @@
 {
-	"version": "{{ app.version | default: pkg.version }}",{% if app.id %}
-	"id": "{{ app.id }}",{% endif %}
-	"name": "{{ app.name | default: pkg.name }}",
-	"short_name": "{{ app.shortName | default: pkg.name}}",
-	"description": "{{ app.description | default: pkg.description }}",
-	"start_url": "{{ app.startUrl | default: page.url | replace: 'webapp.webmanifest', '' }}",
-	"scope": "{{ app.scope | default: '/' }}",
-	"lang": "{{ app.lang | default: 'en' }}",
-	"dir": "{{ app.data.dir | default: 'ltr' }}",
-	"orientation": "{{ app.data.orientation | default: 'any' }}",
-	"display": "{{ app.display | default: 'standalone' }}",
-	"theme_color": "{{ app.theme.color | default: '#007bff' }}",
-	"background_color": "{{ app.theme.background | default: '#FEFEFE' }}",
+	"version": {{ app.version | default: pkg.version | jsonify }},
+	"id": {{ app.id | default: page.url | jsonify }},
+	"name": {{ app.name | default: pkg.name | jsonify }},
+	"short_name": {{ app.shortName | default: pkg.name | jsonify }},
+	"description": {{ app.description | default: pkg.description | jsonify }},
+	"start_url": {{ app.startUrl | default: page.url | replace: 'webapp.webmanifest', '' | jsonify }},
+	"scope": {{ app.scope | default: '/' | jsonify }},
+	"lang": {{ app.lang | default: 'en' | jsonify }},
+	"dir": {{ app.data.dir | default: 'ltr' | jsonify }},
+	"orientation": {{ app.data.orientation | default: 'any' | jsonify }},
+	"display": {{ app.display | default: 'standalone' | jsonify }},
+	"theme_color": {{ app.theme.color | default: '#007bff' | jsonify }},
+	"background_color": {{ app.theme.background | default: '#FEFEFE' | jsonify }},
 	"icons": {{ app.icons | is_icon }},
-	"screenshots": {{ app.screenshots | jsonify }},{% if app.iarc_rating_id %}
-	"iarc_rating_id": {{ app.iarc_rating_id | jsonify }},{% endif %}
-	"prefer_related_applications": {% if app.prefer_related_applications == true %}true{% else %}false{% endif %},{% if app.related_applications %}
-	"related_applications": {{ app.related_applications | jsonify }},{% endif %}{% if app.shortcuts %}
-	"shortcuts": {{ app.shortcuts | jsonify }},{% endif %}{% if app.display_override %}
-	"display_override": {{ app.display_override | jsonify }},{% endif %}{% if app.share_target %}
-	"share_target": {{ app.share_target | jsonify }},{% endif %}{% if app.file_handlers %}
-	"file_handlers": {{ app.file_handlers | jsonify }},{% endif %}{% if app.protocol_handlers %}
-	"protocol_handlers": {{ app.protocol_handlers | jsonify }},{% endif %}
-	"categories": {{ app.categories | jsonify | default: '["lifestyle"]' }},{% if app.features %}
+	"screenshots": {{ app.screenshots | jsonify }}{% if app.iarc_rating_id %},
+	"iarc_rating_id": {{ app.iarc_rating_id | jsonify }}{% endif %}{% if app.serviceworker %},
+	"serviceworker": {{ app.serviceworker | jsonify }}{% endif %},
+	"prefer_related_applications": {% if app.prefer_related_applications == true %}true{% else %}false{% endif %}{% if app.related_applications %},
+	"related_applications": {{ app.related_applications | jsonify }}{% endif %}{% if app.shortcuts %},
+	"shortcuts": {{ app.shortcuts | jsonify }}{% endif %}{% if app.display_override %},
+	"display_override": {{ app.display_override | jsonify }}{% endif %}{% if app.share_target %},
+	"share_target": {{ app.share_target | jsonify }}{% endif %}{% if app.file_handlers %},
+	"file_handlers": {{ app.file_handlers | jsonify }}{% endif %}{% if app.protocol_handlers %},
+	"protocol_handlers": {{ app.protocol_handlers | jsonify }}{% endif %}{% if app.categories %},
+	"categories": {{ app.categories | jsonify | default: '["lifestyle"]' }}{% endif %}{% if app.features %},
 	"features": {{ app.features | jsonify }}{% endif %}
 }
